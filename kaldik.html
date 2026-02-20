@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KALDIK | Dashboard OSA</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/kaldik.css">
+
+</head>
+
+<body class="page-kaldik">
+
+<div class="layout">
+
+    <!-- ================= SIDEBAR ================= -->
+    <div class="sidebar" id="sidebar">
+        <div class="logo">
+            <img src="assets/kai.png" width="120">
+        </div>
+
+        <ul>
+            <li><a href="home.html">HOME</a></li>
+            <li><a href="pelatihan_operasi.html">PELATIHAN OPERASI</a></li>
+            <li><a href="pelatihan_safety.html">PELATIHAN SAFETY</a></li>
+            <li><a href="pelatihan_security.html">PELATIHAN SECURITY</a></li>
+            <li><a href="rka.html">RKA</a></li>
+            <li><a href="diklap.html">DIKLAP</a></li>
+            <li><a href="instruktur.html">INSTRUKTUR</a></li>
+            <li class="active"><a href="kaldik.html">KALDIK</a></li>
+            <li><a href="digital_enablement.html">DIGITAL ENABLEMENT</a></li>
+        </ul>
+
+        <div class="sidebar-toggle" onclick="toggleSidebar()">
+            <span class="arrow">&#8249;</span>
+        </div>
+    </div>
+
+    <!-- ================= MAIN ================= -->
+    <div class="main">
+
+        <!-- ================= HEADER ================= -->
+        <div class="dashboard-header">
+            <div class="dashboard-title">
+                DASHBOARD OPERATION & SAFETY ACADEMY <br>
+                KALDIK
+            </div>
+            <div class="dashboard-hero">
+                <img src="assets/operation.png" class="hero-main-img">
+            </div>
+        </div>
+
+        <!-- ================= HERO SECTION ================= -->
+        <div class="kaldik-hero-wrapper">
+
+            <div class="kaldik-hero-card">
+
+                <img src="assets/kaldik.png" class="kaldik-banner">
+
+                <a href="https://docs.google.com/spreadsheets/d/1HZl8RFRnJFQwMmTg9XH7Yw3OmdMIO9iYFbfEuquxXYY/edit?usp=sharing" class="kaldik-link">
+                    DETAIL KALDIK 2026
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>  <!-- ini baru tutup .main -->
+
+</div> <!-- tutup layout -->
+
+
+<script>
+function toggleSidebar(){
+    document.querySelector('.sidebar').classList.toggle('collapsed');
+    document.querySelector('.main').classList.toggle('collapsed');
+}
+</script>
+
+</body>
+</html>

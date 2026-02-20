@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Login | Dashboard OSA</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- CSS DASHBOARD (LOGIN STYLE ADA DI PALING BAWAH) -->
+<link rel="stylesheet" href="css/style.css">
+
+<!-- FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body class="login-page">
+
+<div class="container">
+
+    <div class="card">
+
+        <!-- LOGO -->
+        <div class="logo-area">
+            <img src="assets/kai.png" alt="Logo KAI">
+            <img src="assets/operation.png" alt="OSA">
+        </div>
+
+        <!-- HEADER -->
+        <div class="header">
+            <h1>DASHBOARD</h1>
+            <p>OPERATION & SAFETY ACADEMY</p>
+        </div>
+
+        <!-- EMAIL -->
+        <div class="field">
+            <label>Email</label>
+            <div class="input-group" id="emailGroup">
+                <input type="email" id="email" placeholder="Masukkan email">
+                <span class="icon"></span>
+            </div>
+        </div>
+
+        <!-- PASSWORD -->
+        <div class="field">
+            <label>Password</label>
+            <div class="input-group" id="passwordGroup">
+                <input type="password" id="password" placeholder="Masukkan password">
+                <span class="icon"></span>
+            </div>
+        </div>
+
+        <!-- BUTTON -->
+        <div class="nav">
+            <button onclick="login()">Login</button>
+        </div>
+
+        <!-- ERROR MESSAGE -->
+        <div id="errorMsg"></div>
+
+    </div>
+
+</div>
+
+<!-- SCRIPT -->
+<script src="js/login.js"></script>
+
+</body>
+</html>

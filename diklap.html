@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DIKLAP | Dashboard OSA</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/highcharts-3d.js"></script>
+
+</head>
+
+<body class="page-diklap">
+
+<div class="layout">
+
+    <!-- ================= SIDEBAR ================= -->
+    <div class="sidebar" id="sidebar">
+        <div class="logo">
+            <img src="assets/kai.png" width="120">
+        </div>
+
+        <ul>
+            <li><a href="home.html">HOME</a></li>
+            <li><a href="pelatihan_operasi.html">PELATIHAN OPERASI</a></li>
+            <li><a href="pelatihan_safety.html">PELATIHAN SAFETY</a></li>
+            <li><a href="pelatihan_security.html">PELATIHAN SECURITY</a></li>
+            <li><a href="rka.html">RKA</a></li>
+            <li class="active"><a href="diklap.html">DIKLAP</a></li>
+            <li><a href="instruktur.html">INSTRUKTUR</a></li>
+            <li><a href="kaldik.html">KALDIK</a></li>
+            <li><a href="digital_enablement.html">DIGITAL ENABLEMENT</a></li>
+        </ul>
+
+        <div class="sidebar-toggle" onclick="toggleSidebar()">
+            <span class="arrow">&#8249;</span>
+        </div>
+    </div>
+
+    <!-- ================= MAIN ================= -->
+    <div class="main">
+
+        <!-- ================= HEADER ================= -->
+        <div class="dashboard-header">
+            <div class="dashboard-title">
+                DASHBOARD OPERATION & SAFETY ACADEMY <br>
+                DIKLAP
+            </div>
+
+            <div class="dashboard-hero">
+                <img src="assets/operation.png" class="hero-main-img">
+            </div>
+        </div>
+
+
+        <!-- ================= KPI DUAL ================= -->
+        <div class="kpi-dual">
+
+            <!-- DIKLAP -->
+            <div>
+                <div class="kpi-row">
+
+                    <!-- PROGRAM -->
+                    <div class="kpi-item">
+                        <div class="kpi-label">PROGRAM</div>
+                        <div class="card teal">
+                            <p>DIKLAP</p>
+                            <h2 id="kpiProgramDiklap">0</h2>
+                        </div>
+                    </div>
+
+                    <!-- REALISASI -->
+                    <div class="kpi-item">
+                        <div class="kpi-label">REALISASI</div>
+                        <div class="card teal">
+                            <p>DIKLAP</p>
+                            <h2 id="kpiRealisasiDiklap">0</h2>
+                            <small id="kpiPersenDiklap">0%</small>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- PESERTA -->
+            <div>
+                <div class="kpi-row">
+
+                    <!-- PROGRAM -->
+                    <div class="kpi-item">
+                        <div class="kpi-label">PROGRAM</div>
+                        <div class="card blue">
+                            <p>PESERTA</p>
+                            <h2 id="kpiProgramPesertaDiklap">0</h2>
+                        </div>
+                    </div>
+
+                    <!-- REALISASI -->
+                    <div class="kpi-item">
+                        <div class="kpi-label">REALISASI</div>
+                        <div class="card blue">
+                            <p>PESERTA</p>
+                            <h2 id="kpiRealisasiPesertaDiklap">0</h2>
+                            <small id="kpiPersenPesertaDiklap">0%</small>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- ================= CHART ROW ================= -->
+        <div class="diklap-chart-row">
+
+            <!-- MANDATORY -->
+            <div class="diklap-chart-box">
+                <h3>DIKLAP MANDATORY / NON MANDATORY</h3>
+                <div id="mandatoryChart" style="height:380px;"></div>
+            </div>
+
+            <!-- PESERTA -->
+            <div class="diklap-chart-box">
+                <h3>PESERTA DIKLAP</h3>
+                <div id="pesertaDiklapChart" style="height:380px;"></div>
+            </div>
+
+        </div>
+
+
+        <!-- ================= FILTER ================= -->
+        <div class="filter-wrapper">
+
+            <div class="multi-select" id="diklapFilter">
+                <div class="select-box">Filter Diklap</div>
+
+                <div class="checkbox-list" id="checkboxDiklap">
+                    <input type="text" id="searchDiklap" placeholder="Type to search">
+                    <div id="checkboxContainerDiklap"></div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- ================= DETAIL ================= -->
+        <div class="chart-section">
+            <h3>DETAIL DIKLAP & PESERTA</h3>
+            <div id="detailDiklapChart" style="height:600px;"></div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- ================= SIDEBAR TOGGLE ================= -->
+<script>
+function toggleSidebar(){
+    document.querySelector('.sidebar').classList.toggle('collapsed');
+    document.querySelector('.main').classList.toggle('collapsed');
+}
+</script>
+
+<!-- ================= SHEET CONFIG ================= -->
+<script>
+const SHEET_KPI = "KPI_DIKLAP";
+</script>
+
+<!-- ================= JS ================= -->
+<script src="js/data.js"></script>
+<script src="js/diklap.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>INSTRUKTUR | Dashboard OSA</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/instruktur.css">
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/highcharts-3d.js"></script>
+
+</head>
+
+<body class="page-instruktur">
+
+<div class="layout">
+
+    <!-- ================= SIDEBAR ================= -->
+    <div class="sidebar" id="sidebar">
+        <div class="logo">
+            <img src="assets/kai.png" width="120">
+        </div>
+
+        <ul>
+            <li><a href="home.html">HOME</a></li>
+            <li><a href="pelatihan_operasi.html">PELATIHAN OPERASI</a></li>
+            <li><a href="pelatihan_safety.html">PELATIHAN SAFETY</a></li>
+            <li><a href="pelatihan_security.html">PELATIHAN SECURITY</a></li>
+            <li><a href="rka.html">RKA</a></li>
+            <li><a href="diklap.html">DIKLAP</a></li>
+            <li class="active"><a href="instruktur.html">INSTRUKTUR</a></li>
+            <li><a href="kaldik.html">KALDIK</a></li>
+            <li><a href="digital_enablement.html">DIGITAL ENABLEMENT</a></li>
+        </ul>
+
+        <div class="sidebar-toggle" onclick="toggleSidebar()">
+            <span class="arrow">&#8249;</span>
+        </div>
+    </div>
+
+    <!-- ================= MAIN ================= -->
+    <div class="main">
+
+        <!-- ================= HEADER ================= -->
+        <div class="dashboard-header">
+            <div class="dashboard-title">
+                DASHBOARD OPERATION & SAFETY ACADEMY <br>
+                INSTRUKTUR
+            </div>
+
+            <div class="dashboard-hero">
+                <img src="assets/operation.png" class="hero-main-img">
+            </div>
+        </div>
+
+        <!-- ================= KPI STRIP ================= -->
+        <div class="instruktur-kpi-strip">
+
+            <div class="instruktur-kpi-card">
+                <p>Dedicated HLO Instructor</p>
+                <h3 id="kpiHLO">0</h3>
+            </div>
+
+            <div class="instruktur-kpi-card">
+                <p>Dedicated Non-HLO Instructor</p>
+                <h3 id="kpiNonHLO">0</h3>
+            </div>
+
+            <div class="instruktur-kpi-card">
+                <p>SME</p>
+                <h3 id="kpiSME">0</h3>
+            </div>
+
+            <div class="instruktur-kpi-card">
+                <p>Eksternal</p>
+                <h3 id="kpiEksternal">0</h3>
+            </div>
+
+            <div class="instruktur-kpi-card">
+                <p>Jumlah JP</p>
+                <h3 id="kpiJumlahJP">0</h3>
+            </div>
+        </div>
+
+
+        <!-- ================= JP INSTRUKTUR ================= -->
+<!-- ================= JP INSTRUKTUR ================= -->
+
+<!-- FILTER DI LUAR BOX -->
+<div class="filter-wrapper" style="margin-top:40px;">
+    <div class="multi-select" id="jpInstrukturFilter">
+        <div class="select-box">Filter Kategori</div>
+
+        <div class="checkbox-list" id="checkboxKategori">
+            <input type="text" id="searchKategori" placeholder="Type to search">
+            <div id="checkboxContainerKategori"></div>
+        </div>
+    </div>
+</div>
+
+<!-- BOX CHART -->
+<div class="chart-section">
+    <h3>JP INSTRUKTUR</h3>
+    <div id="jpInstrukturChart" style="height:420px;"></div>
+</div>
+
+
+
+        <!-- ================= FILTER NAMA ================= -->
+        <div class="filter-wrapper" style="margin-top:40px;">
+            <div class="multi-select" id="trainerFilter">
+                <div class="select-box">NAMA</div>
+
+                <div class="checkbox-list" id="checkboxTrainer">
+                    <input type="text" id="searchTrainer" placeholder="Type to search">
+                    <div id="checkboxContainerTrainer"></div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- ================= JP TRAINER ================= -->
+        <div class="chart-section">
+            <h3>JP TRAINER by NAMA</h3>
+            <div id="jpTrainerChart" style="height:700px;"></div>
+        </div>
+
+
+    </div>
+</div>
+
+
+<!-- ================= SIDEBAR TOGGLE ================= -->
+<script>
+function toggleSidebar(){
+    document.querySelector('.sidebar').classList.toggle('collapsed');
+    document.querySelector('.main').classList.toggle('collapsed');
+}
+</script>
+
+
+<!-- ================= JS ================= -->
+<script src="js/data.js"></script>
+<script src="js/instruktur.js"></script>
+
+</body>
+</html>

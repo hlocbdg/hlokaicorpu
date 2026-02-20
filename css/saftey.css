@@ -1,0 +1,56 @@
+/* ============================= */
+/* COPY DARI OPERASI - GANTI PREFIX */
+/* ============================= */
+
+.page-safety .top-header{
+    display:flex;
+    justify-content:center;
+    gap:120px;
+    margin-bottom:30px;
+}
+
+.page-safety .top-header h1{
+    width:50%;
+    text-align:center;
+    font-size:48px;
+    font-weight:800;
+}
+
+.page-safety .top-header .right{
+    text-align:center;
+    color:#4657b1;
+}
+
+/* Bikin sisi kiri & kanan center */
+.page-safety .kpi-dual > div{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+/* Samakan titik tengah dengan header */
+.page-safety .kpi-row{
+    display:flex;
+    gap:30px;
+    justify-content:center;
+    width:100%;
+}
+.page-safety .top-header{
+    display:flex;
+    justify-content:center;
+    gap:120px;
+    margin-bottom:30px;
+}
+
+.page-safety .top-header h1{
+    width:50%;
+    text-align:center;
+    font-size:48px;
+    font-weight:800;
+}
+
+.page-safety .top-header .right{
+    text-align:center;
+    color:#4657b1;
+}
+

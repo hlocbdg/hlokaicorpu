@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard OSA</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+
+<!-- HIGHCHARTS 3D -->
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/highcharts-3d.js"></script>
+
+</head>
+
+<body>
+
+<div class="layout">
+
+<div class="sidebar" id="sidebar">
+    <div class="logo">
+        <img src="assets/kai.png" width="120">
+    </div>
+
+
+<ul>
+    <li class="active"><a href="home.html">HOME</a></li>
+    <li><a href="pelatihan_operasi.html">PELATIHAN OPERASI</a></li>
+    <li><a href="pelatihan_safety.html">PELATIHAN SAFETY</a></li>
+    <li><a href="pelatihan_security.html">PELATIHAN SECURITY</a></li>
+    <li><a href="rka.html">RKA</a></li>
+    <li><a href="diklap.html">DIKLAP</a></li>
+    <li><a href="instruktur.html">INSTRUKTUR</a></li>
+    <li><a href="kaldik.html">KALDIK</a></li>
+    <li><a href="digital_enablement.html">DIGITAL ENABLEMENT</a></li>
+</ul>
+
+
+
+    <!-- TARUH DI SINI -->
+    <div class="sidebar-toggle" onclick="toggleSidebar()">
+        <span class="arrow">&#8249;</span>
+
+    </div>
+
+</div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main">
+
+    
+<!-- DASHBOARD HEADER (TAMBAHAN) -->
+<div class="dashboard-header">
+
+    <div class="dashboard-title">
+        DASHBOARD OPERATION & SAFETY ACADEMY
+    </div>
+
+<div class="dashboard-hero">
+
+    <!-- Gambar Operation dipindah ke kiri -->
+    <img src="assets/operation.png" class="hero-main-img">
+
+</div>
+
+
+</div>
+
+        <!-- HEADER -->
+        <div class="top-header">
+            <h1>PELATIHAN</h1>
+            <h1 class="right">PESERTA</h1>
+        </div>
+
+        <!-- KPI -->
+        <div class="kpi-wrapper">
+
+            <div class="card teal">
+                <h4>PROGRAM</h4>
+                <h2 id="kpiProgramPelatihan">0</h2>
+            </div>
+
+            <div class="card teal">
+                <h4>REALISASI</h4>
+                <h2 id="kpiRealisasiPelatihan">0</h2>
+                <p id="kpiPersenPelatihan">0%</p>
+            </div>
+
+            <div class="card magenta">
+                <h4>KALDIK</h4>
+                <h2 id="kpiKaldik">0</h2>
+            </div>
+
+            <div class="card magenta">
+                <h4>NON KALDIK</h4>
+                <h2 id="kpiNonKaldik">0</h2>
+            </div>
+
+            <div class="card blue">
+                <h4>PROGRAM</h4>
+                <h2 id="kpiProgramPeserta">0</h2>
+            </div>
+
+            <div class="card blue">
+                <h4>REALISASI</h4>
+                <h2 id="kpiRealisasiPeserta">0</h2>
+                <p id="kpiPersenPeserta">0%</p>
+            </div>
+
+        </div>
+
+        <!-- Highlight -->
+        <div class="section-title">Highlight Pelatihan</div>
+
+<div class="box full">
+    <div class="double-box">
+
+        <div>
+            <h3>PELATIHAN MANDATORY</h3>
+            <div id="mandatoryChart" class="chart-box"></div>
+        </div>
+
+        <div>
+            <h3>PESERTA PELATIHAN</h3>
+            <div id="pesertaChart" class="chart-box"></div>
+            
+        </div>
+
+    </div>
+</div>
+
+
+<!-- ================= APDP (HARUS DI LUAR double-box DI ATAS) ================= -->
+
+<div class="section-title">APDP</div>
+
+<div class="box full">
+    <div class="double-box">
+
+        <div>
+            <h3>PELATIHAN TDP</h3>
+            <div id="tdpChart" class="chart-box"></div>
+        </div>
+
+        <div>
+            <h3>PELATIHAN IDP</h3>
+            <div id="idpChart" class="chart-box"></div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+  <!-- ================= Realisasi ================= -->
+
+<div class="section-title">Realisasi Pelatihan</div>
+
+<div class="box full">
+    <h3>PELATIHAN OPERATION & SAFETY ACADEMY</h3>
+    <div id="academyVolumeChart" class="chart-box"></div>
+
+<br>
+
+<div id="academyPesertaChart" class="chart-box"></div>
+
+</div>
+
+    </div>
+</div>
+
+<script>
+function toggleSidebar(){
+    document.querySelector('.sidebar').classList.toggle('collapsed');
+    document.querySelector('.main').classList.toggle('collapsed');
+
+    // PAKSA CHART RESIZE
+    setTimeout(function(){
+        if (typeof resizeCharts === "function") {
+            resizeCharts();
+        }
+    }, 300);
+}
+</script>
+
+
+<script>
+const SHEET_KPI = "KPI_UTAMA";
+</script>
+<script src="js/data.js"></script>
+<script src="js/charts.js"></script>
+
+
+</body>
+</html>

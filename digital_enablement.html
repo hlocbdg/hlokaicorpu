@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DIGITAL ENABLEMENT | Dashboard OSA</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/digital_enablement.css">
+
+</head>
+
+<body class="page-digital">
+
+<div class="layout">
+
+    <!-- ================= SIDEBAR ================= -->
+    <div class="sidebar" id="sidebar">
+        <div class="logo">
+            <img src="assets/kai.png" width="120">
+        </div>
+
+        <ul>
+            <li><a href="home.html">HOME</a></li>
+            <li><a href="pelatihan_operasi.html">PELATIHAN OPERASI</a></li>
+            <li><a href="pelatihan_safety.html">PELATIHAN SAFETY</a></li>
+            <li><a href="pelatihan_security.html">PELATIHAN SECURITY</a></li>
+            <li><a href="rka.html">RKA</a></li>
+            <li><a href="diklap.html">DIKLAP</a></li>
+            <li><a href="instruktur.html">INSTRUKTUR</a></li>
+            <li><a href="kaldik.html">KALDIK</a></li>
+            <li class="active"><a href="digital_enablement.html">DIGITAL ENABLEMENT</a></li>
+        </ul>
+
+        <div class="sidebar-toggle" onclick="toggleSidebar()">
+            <span class="arrow">&#8249;</span>
+        </div>
+    </div>
+
+    <!-- ================= MAIN ================= -->
+    <div class="main">
+
+        <!-- ================= HEADER ================= -->
+        <div class="dashboard-header">
+            <div class="dashboard-title">
+                DASHBOARD OPERATION & SAFETY ACADEMY <br>
+                DIGITAL ENABLEMENT
+            </div>
+            <div class="dashboard-hero">
+                <img src="assets/operation.png" class="hero-main-img">
+            </div>
+        </div>
+
+<!-- ================= KPI SECTION ================= -->
+<div class="digital-kpi-section">
+
+<div class="digital-kpi-title">
+    INDEKS KEPUASAN SISWA DAN PASCA DIKLAT
+</div>
+
+    <div class="instruktur-kpi-strip">
+
+        <div class="instruktur-kpi-card">
+            <p>Indeks Kepuasan Siswa</p>
+            <h3 id="kpiIndekskepuasan">0</h3>
+        </div>
+
+        <div class="instruktur-kpi-card">
+            <p>Indeks Pasca Diklat</p>
+            <h3 id="kpiIndekspasca">0</h3>
+        </div>
+
+    </div>
+
+</div>
+
+        <!-- ================= HERO SECTION ================= -->
+        <div class="digital-wrapper">
+
+            <div class="digital-card small">
+                <img src="assets/simontoks.png" class="digital-banner small-img">
+            </div>
+
+            <div class="digital-card">
+                <img src="assets/smart_information.png" class="digital-banner">
+            </div>
+
+            <div class="digital-card">
+                <img src="assets/operational_training.png" class="digital-banner">
+            </div>
+
+            <a href="https://drive.google.com/file/d/1O95grtKh9nTeWMDG0Brpq-dU3RFG8qho/view?usp=drive_link" class="digital-detail-link">
+                DETAIL DIGITAL ENABLEMENT
+            </a>
+
+        </div>
+
+    </div>
+</div>
+
+<script>
+function toggleSidebar(){
+    document.querySelector('.sidebar').classList.toggle('collapsed');
+    document.querySelector('.main').classList.toggle('collapsed');
+}
+</script>
+
+<!-- JS KPI ENABLEMENT -->
+ <script src="js/data.js"></script>
+<script src="js/enablement.js"></script>
+
+</body>
+</html>

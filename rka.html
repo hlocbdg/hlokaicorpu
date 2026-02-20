@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RKA | Dashboard OSA</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/highcharts-3d.js"></script>
+<link rel="stylesheet" href="css/style.css">
+
+
+<!-- SET SHEET -->
+<script>
+const SHEET_KPI = "RKA";
+</script>
+<script src="js/data.js"></script>
+<script src="js/rka.js" defer></script>
+
+</head>
+
+<body>
+
+<div class="layout">
+
+<!-- ================= SIDEBAR ================= -->
+<div class="sidebar" id="sidebar">
+    <div class="logo">
+        <img src="assets/kai.png" width="120">
+    </div>
+
+    <ul>
+        <li><a href="home.html">HOME</a></li>
+        <li><a href="pelatihan_operasi.html">PELATIHAN OPERASI</a></li>
+        <li><a href="pelatihan_safety.html">PELATIHAN SAFETY</a></li>
+        <li><a href="pelatihan_security.html">PELATIHAN SECURITY</a></li>
+        <li class="active"><a href="rka.html">RKA</a></li>
+        <li><a href="diklap.html">DIKLAP</a></li>
+        <li><a href="instruktur.html">INSTRUKTUR</a></li>
+        <li><a href="kaldik.html">KALDIK</a></li>
+        <li><a href="digital_enablement.html">DIGITAL ENABLEMENT</a></li>
+    </ul>
+
+    <div class="sidebar-toggle" onclick="toggleSidebar()">
+        <span class="arrow">&#8249;</span>
+    </div>
+</div>
+
+
+<!-- ================= MAIN ================= -->
+<div class="main">
+
+<!-- HEADER -->
+<div class="dashboard-header">
+    <div class="dashboard-title">
+        DASHBOARD OPERATION & SAFETY ACADEMY <br> RKA
+    </div>
+    <div class="dashboard-hero">
+        <img src="assets/operation.png" class="hero-main-img">
+    </div>
+</div>
+
+
+<!-- ================= KPI ================= -->
+<div class="section-rka">
+    <div class="rka-row">
+
+        <!-- RKA 2025 -->
+        <div class="rka-item">
+            <div class="rka-title">RKA 2025</div>
+            <div class="rka-card">
+                <p>PENETAPAN RKA 2025</p>
+                <h2 id="rka2025">0</h2>
+            </div>
+        </div>
+
+        <!-- RKA 2026 -->
+        <div class="rka-item">
+            <div class="rka-title">RKA 2026</div>
+            <div class="rka-card">
+                <p>PENETAPAN RKA 2026</p>
+                <h2 id="rkaSoBaru">0</h2>
+                <small id="rkaSoBaruPersen">0%</small>
+            </div>
+        </div>
+
+        <!-- RELEASE BUDGET -->
+        <div class="rka-item">
+            <div class="rka-title">RELEASE BUDGET</div>
+            <div class="rka-card">
+                <p>MASUK</p>
+                <h2 id="rkaReleaseBudget">0</h2>
+                <small id="rkaReleaseBudgetPersen">0%</small>
+            </div>
+        </div>
+
+        <!-- CONSUMED BUDGET -->
+        <div class="rka-item">
+            <div class="rka-title">CONSUMED BUDGET</div>
+            <div class="rka-card">
+                <p>NILAI</p>
+                <h2 id="rkaRealisasi">0</h2>
+                <small id="rkaRealisasiPersen">0%</small>
+            </div>
+        </div>
+
+        <!-- SISA ANGGARAN -->
+        <div class="rka-item">
+            <div class="rka-title">SISA ANGGARAN</div>
+            <div class="rka-card">
+                <p>SISA ANGGARAN</p>
+                <h2 id="rkaSisa">0</h2>
+                <small id="rkaSisaPersen">0%</small>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- ================= TB OUT (DIPINDAH KE ATAS DONUT) ================= -->
+
+<div class="section-rka-detail">
+
+    <div class="multi-select" id="tbFilter">
+        <div class="select-box">Pos Anggaran</div>
+        <div class="checkbox-list" id="checkboxTb"></div>
+    </div>
+
+    <h3>Breakdown RKA 2026</h3>
+    <div id="tbOutChart" class="rka-chart-detail"></div>
+
+</div>
+<!-- ================= DONUT ================= -->
+<div class="section-rka-chart">
+
+    <div class="rka-chart-row">
+        <div class="rka-chart-box">
+            <h3>RKA 2026</h3>
+            <div id="rkaDonut"></div>
+        </div>
+
+        <div class="rka-chart-box">
+            <h3>Consumed Budget</h3>
+            <div id="consumedDonut"></div>
+        </div>
+    </div>
+
+    <div class="rka-chart-full">
+        <h3>PERBANDINGAN BIAYA PELATIHAN</h3>
+        <div id="biayaChart" style="height: 550px;"></div>
+
+
+    </div>
+
+</div>
+
+
+<!-- ================= DETAIL ================= -->
+<div class="section-rka-detail">
+
+    <!-- PENDIDIKAN -->
+    <div class="multi-select" id="pendidikanFilter">
+        <div class="select-box">Uraian Biaya</div>
+        <div class="checkbox-list" id="checkboxPendidikan"></div>
+    </div>
+
+    <h3>Detail Pendidikan of Consumed Budget</h3>
+    <div id="pendidikanChart" class="rka-chart-detail"></div>
+
+
+    <!-- FASUM -->
+    <div class="multi-select" id="fasumFilter">
+        <div class="select-box">Pos Anggaran</div>
+        <div class="checkbox-list" id="checkboxFasum"></div>
+    </div>
+
+    <h3>Detail Fasum of Consumed Budget</h3>
+    <div id="fasumChart" class="rka-chart-detail"></div>
+
+
+    <!-- PROGNOSA -->
+    <div class="multi-select" id="prognosaFilter">
+        <div class="select-box">Filter Data Prognosa</div>
+        <div class="checkbox-list" id="checkboxPrognosa"></div>
+    </div>
+
+    <h3>PROGNOSA RKA</h3>
+    <div id="prognosaChart" class="rka-chart-detail"></div>
+
+</div>
+
+
+</div>
+</div>
+
+
+<!-- ================= SCRIPT ================= -->
+<script>
+function toggleSidebar(){
+    document.querySelector('.sidebar').classList.toggle('collapsed');
+    document.querySelector('.main').classList.toggle('collapsed');
+
+    setTimeout(function(){
+        if (typeof resizeCharts === "function") {
+            resizeCharts();
+        }
+    }, 300);
+}
+</script>
+
+</body>
+</html>
