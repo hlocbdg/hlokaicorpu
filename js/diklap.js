@@ -444,4 +444,19 @@ document.addEventListener("DOMContentLoaded", function(){
     checkboxList.addEventListener("click", function(e){
         e.stopPropagation();
     });
+
 });
+
+/* =========================
+   AUTH GUARD
+========================= */
+
+(function(){
+
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+
+    if(isLoggedIn !== "true"){
+        window.location.href = "index.html";
+    }
+
+})();
