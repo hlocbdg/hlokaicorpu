@@ -426,4 +426,17 @@ wrapper.addEventListener("change", function(){
 });
 
 }
+/* =========================
+   AUTH GUARD
+========================= */
+
+(function(){
+
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+
+    if(isLoggedIn !== "true"){
+        window.location.href = "index.html";
+    }
+
+})();
 
