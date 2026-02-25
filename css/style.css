@@ -1895,3 +1895,70 @@ canvas{
         max-width:95%;
     }
 }
+
+
+/* =========================
+   SIDEBAR FOOTER
+========================= */
+
+.sidebar-footer{
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+
+/* =========================
+   LOGOUT CONTAINER
+========================= */
+
+.logout-text{
+    font-size: 13px;
+    font-weight: 600;
+    color: #cbd5f5;
+    cursor: pointer;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+
+/* =========================
+   ICON STYLE
+========================= */
+
+.logout-icon{
+    font-size: 14px;
+    opacity: 0.85;
+}
+
+
+/* =========================
+   HOVER EFFECT
+========================= */
+
+.logout-text:hover{
+    color: #ef4444;
+    transform: translateY(-1px);
+}
+
+
+/* =========================
+   COLLAPSE MODE 😎
+========================= */
+
+.sidebar.collapsed .sidebar-footer{
+    display: none;
+}
+
+
+/* =========================
+   OPTIONAL MICRO EFFECT
+========================= */
+
+.logout-text:active{
+    transform: scale(0.95);
+}
