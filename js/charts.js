@@ -672,3 +672,10 @@ document.querySelector('#pelatihanFilterPeserta .select-box')
     }
 
 })();
+function logout(){
+
+    if(confirm("Yakin mau logout?")){
+        localStorage.clear();
+        window.location.href = "index.html";
+    }
+}
