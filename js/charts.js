@@ -255,7 +255,7 @@ Highcharts.chart('tdpChart', {
       alpha: 45
     }
   },
-  title: { text: null },
+  title: {  text: 'Volume Pelatihan' }, // Judul agar lebih jelas text: null },
   plotOptions: {
     pie: {
       depth: 45,
@@ -266,10 +266,12 @@ Highcharts.chart('tdpChart', {
     }
   },
   series: [{
-    name: 'TDP',
+    name: 'Volume',//'TDP',
     data: [
-      { name: 'Volume', y: +tdp.VOLUME || 0 },
-      { name: 'Peserta', y: +tdp.PESERTA || 0 }
+       { name: 'TDP', y: +tdp.VOLUME || 0 },
+      { name: 'IDP', y: +idp.VOLUME || 0 }
+     // { name: 'Volume', y: +tdp.VOLUME || 0 },
+    //  { name: 'Peserta', y: +tdp.PESERTA || 0 }
     ]
   }]
 });
@@ -286,7 +288,7 @@ Highcharts.chart('idpChart', {
       alpha: 45
     }
   },
-  title: { text: null },
+  title:{ text: 'Jumlah Peserta' },// { text: null },
   plotOptions: {
     pie: {
       depth: 45,
@@ -297,10 +299,12 @@ Highcharts.chart('idpChart', {
     }
   },
   series: [{
-    name: 'IDP',
+    name: 'Peserta',//'IDP',
     data: [
-      { name: 'Volume', y: +idp.VOLUME || 0 },
-      { name: 'Peserta', y: +idp.PESERTA || 0 }
+       { name: 'TDP', y: +tdp.PESERTA || 0 },
+      { name: 'IDP', y: +idp.PESERTA || 0 }
+     // { name: 'Volume', y: +idp.VOLUME || 0 },
+    //  { name: 'Peserta', y: +idp.PESERTA || 0 }
     ]
   }]
 });
@@ -679,3 +683,4 @@ function logout(){
         window.location.href = "index.html";
     }
 }
+
