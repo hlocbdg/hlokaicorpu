@@ -1966,80 +1966,37 @@ canvas{
 /* =========================
    tabel tw
 ========================= */
-/* =======================================================
-   FIX TABEL REKAPITULASI (PENGATURAN KHUSUS)
-   ======================================================= */
-
-/* Pastikan box tabel tidak membesar keluar dari area .main */
+/* Pastikan tabel tidak meluber ke samping sidebar */
 .box.full {
-    width: 100% !important;
-    max-width: 100% !important;
-    box-sizing: border-box; /* Padding 25px tidak akan menambah lebar */
-    overflow: hidden;       /* Kunci konten agar tidak bocor keluar border-radius */
-    margin-bottom: 40px;
+    overflow-x: auto; /* Aktifkan scroll jika layar sempit */
+    padding: 20px;
 }
 
-/* Container agar tabel bisa di-scroll di HP tapi tetap rapi di PC */
-.table-container {
-    width: 100%;
-    overflow-x: auto;
-    margin-top: 15px;
-    border-radius: 8px;
-    border: 1px solid #eee;
-}
-
-/* Styling inti tabel */
 .styled-table {
     width: 100%;
+    min-width: 800px; /* Jaga agar tabel punya lebar minimal supaya tidak berhimpitan */
     border-collapse: collapse;
-    /* KUNCI: Memaksa tabel patuh pada lebar container, bukan panjang teks */
-    table-layout: fixed; 
-    font-size: 13px;
-    background-color: white;
+    table-layout: fixed; /* Bagi kolom secara sistematis */
 }
 
-/* Header Tabel (Pastikan Sejajar) */
-.styled-table thead th {
-    background-color: #f8f9fa;
-    color: #1f2a38;
+/* Beri ruang lebih lebar untuk kolom PERIODE */
+.styled-table th:first-child, 
+.styled-table td:first-child {
+    width: 120px; 
+    text-align: left;
+    padding-left: 15px;
     font-weight: 700;
-    border: 1px solid #dee2e6;
-    padding: 12px 6px;
-    text-align: center;
 }
 
-/* Sel Data */
-.styled-table td {
-    padding: 10px 6px;
-    border: 1px solid #eee;
-    text-align: center;
-    color: #444;
-    /* Paksa teks panjang turun ke bawah agar tidak dorong kolom ke samping */
-    word-wrap: break-word; 
-    white-space: normal;
+/* Atur sisa kolom (B sampai G) agar dibagi rata */
+.styled-table th:not(:first-child),
+.styled-table td:not(:first-child) {
+    width: auto;
 }
 
-/* Pengaturan Lebar Kolom (Proporsional) */
-.styled-table th:nth-child(1) { width: 14%; } /* PERIODE */
-.styled-table th:nth-child(n+2) { width: 14.3%; } /* Sisa Kolom bagi rata */
-
-/* Pewarnaan Baris Berdasarkan Class dari JS */
-.row-sm {
-    background-color: #e7f1ff !important; /* Biru Muda SM */
-    font-weight: 700;
-    color: #0c5460;
-}
-
-.row-total {
-    background-color: #f1f0ff !important; /* Ungu Muda Total */
-    font-weight: 800;
-    color: #4657b1;
-}
-
-/* Hover Effect baris biasa */
-.styled-table tbody tr:hover {
-    background-color: #fcfcfc;
-}
+/* Warna sesuai gambar cell.png */
+.row-sm { background-color: #d9e7fd !important; } /* Biru Muda */
+.row-total { background-color: #d1c4e9 !important; } /* Ungu Muda */
 /* =========================
    tabel tw
 ========================= */
