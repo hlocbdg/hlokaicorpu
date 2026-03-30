@@ -32,8 +32,8 @@ async function fetchSheetTable() {
     const sheetID = '1Wuw7mdvowQ8kRH2hbTzcpoBKBkktl3ADOq1iftSoVkY';
     const sheetName = 'Tabel1';
     
-    // RANGE DISESUAIKAN: A3 sampai G9 (sesuai gambar table 1.png)
-    // headers=0 agar TW I tidak hilang
+    // Range A3:G9 sesuai gambar terbaru (A3 = TW I)
+    // &headers=0 sangat penting agar baris pertama tidak dianggap judul kolom
     const url = `https://docs.google.com/spreadsheets/d/${sheetID}/gviz/tq?sheet=${sheetName}&range=A3:G9&headers=0`;
 
     try {
@@ -48,32 +48,34 @@ async function fetchSheetTable() {
         body.innerHTML = ""; 
 
         rows.forEach((rowData) => {
-            if (!rowData.c || !rowData.c[0]) return;
+            if (!rowData.c) return;
 
             const tr = document.createElement("tr");
             
-            // Ambil kolom A (Index 0) untuk teks Periode
-            const periode = rowData.c[0] ? (rowData.c[0].f || rowData.c[0].v || "") : "";
+            // Ambil kolom Periode (A)
+            const periode = rowData.c[0] ? (rowData.c[0].f || rowData.c[0].v || "").toString().trim() : "";
             
-            // Saring jika ada baris kosong yang tidak sengaja terambil
-            if (periode.trim() === "") return;
+            // Validasi: Jika periode kosong, jangan tampilkan baris
+            if (periode === "") return;
 
-            // Tambahkan class warna sesuai format gambar
-            if (String(periode).includes("SM 1")) tr.style.backgroundColor = "#d9e7fd"; // Biru
-            if (String(periode).includes("SM 2")) tr.style.backgroundColor = "#e0f2f1"; // Hijau Mint
-            if (String(periode) === "2026") tr.style.backgroundColor = "#d1c4e9";      // Ungu
+            // Pewarnaan baris otomatis
+            if (periode.includes("SM 1")) tr.style.backgroundColor = "#d9e7fd";
+            if (periode.includes("SM 2")) tr.style.backgroundColor = "#e0f2f1";
+            if (periode === "2026") tr.style.backgroundColor = "#d1c4e9";
 
             rowData.c.forEach((cell) => {
                 const td = document.createElement("td");
-                // Gunakan f (formatted value) untuk mempertahankan format % dan ribuan
+                // Menampilkan formatted value (misal: 90,00%)
                 td.innerText = cell ? (cell.f ? cell.f : (cell.v !== null ? cell.v : "")) : "";
                 tr.appendChild(td);
             });
             
             body.appendChild(tr);
         });
-        console.log("Data tabel berhasil dimuat dari A3:G9");
+        console.log("Data tabel berhasil dirender.");
     } catch (error) {
-        console.error("Gagal sinkronisasi data tabel:", error);
+        console.error("Data gagal muncul:", error);
     }
 }
+
+document.addEventListener('DOMContentLoaded', fetchSheetTable);
