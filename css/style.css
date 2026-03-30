@@ -1962,3 +1962,37 @@ canvas{
 .logout-text:active{
     transform: scale(0.95);
 }
+
+/* =========================
+   tabel tw
+========================= */
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.styled-table th {
+    background-color: #f0f4f8;
+    color: #333;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-weight: 800;
+}
+
+.styled-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+/* Warna untuk baris tertentu sesuai gambar */
+.row-sm { background-color: #d1e3fa; font-weight: bold; }
+.row-total { background-color: #c5c1e5; font-weight: bold; }
+
+.table-container { overflow-x: auto; }
+
+/* =========================
+   tabel tw
+========================= */
+
