@@ -685,7 +685,7 @@ function logout(){
 }
 
 /* =========================
-   tabel triwulan
+   tabel triwulan diklat
 ========================= */
 /* =======================================================
    TAMBAHAN FUNGSI AMBIL & RENDER DATA TABEL
@@ -693,6 +693,70 @@ function logout(){
 async function fetchAndRenderTable() {
     // ID Sheet tetap sama dari data.js
     const sheetName = 'Tabel1'; 
+    
+    // RANGE PRESISI: A3 sampai G9 (sesuai gambar tabel terbaru)
+    // tqx=out:csv atau out:json
+    const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?sheet=${sheetName}&range=A3:G9&headers=0`;
+
+    try {
+        const response = await fetch(url);
+        const text = await response.text();
+        
+        // Bersihkan prefix JSON Google
+        const jsonText = text.substring(text.indexOf("{"), text.lastIndexOf("}") + 1);
+        const jsonData = JSON.parse(jsonText);
+        const rows = jsonData.table.rows;
+        
+        const body = document.getElementById("tableBody");
+        if (!body) return;
+        body.innerHTML = ""; // Kosongkan tabel sebelum diisi
+
+        rows.forEach((rowData) => {
+            if (!rowData.c || !rowData.c[0]) return; // Lewati jika baris kosong
+
+            const tr = document.createElement("tr");
+            
+            // Ambil label Periode (Kolom A / Index 0)
+            const periode = rowData.c[0] ? (rowData.c[0].f || rowData.c[0].v || "").toString().trim() : "";
+            
+            // Validasi: Jika periode kosong, jangan tampilkan baris
+            if (periode === "") return;
+
+            // Tambahkan Class Warna Baris (Sinkron dengan CSS)
+            if (periode.includes("SM 1")) tr.className = "row-sm-1";
+            if (periode.includes("SM 2")) tr.className = "row-sm-2";
+            if (periode.includes("2026")) tr.className = "row-total";
+
+            // Loop Kolom A sampai G
+            rowData.c.forEach((cell) => {
+                const td = document.createElement("td");
+                
+                // Gunakan cell.f (Formatted Value) agar persen (90,00%) muncul sesuai Sheet
+                // Jika tidak ada .f, gunakan .v (Value)
+                td.innerText = cell ? (cell.f ? cell.f : (cell.v !== null ? cell.v : "")) : "";
+                tr.appendChild(td);
+            });
+            
+            body.appendChild(tr);
+        });
+        console.log("Tabel Rekapitulasi berhasil dimuat sesuai urutan sumber.");
+    } catch (error) {
+        console.error("Gagal sinkronisasi data tabel:", error);
+    }
+}
+
+// Jalankan fungsi saat halaman dimuat
+document.addEventListener('DOMContentLoaded', fetchAndRenderTable);
+
+/* =========================
+   tabel triwulan diklap
+========================= */
+/* =======================================================
+   TAMBAHAN FUNGSI AMBIL & RENDER DATA TABEL
+   ======================================================= */
+async function fetchAndRenderTable() {
+    // ID Sheet tetap sama dari data.js
+    const sheetName = 'Tabel2'; 
     
     // RANGE PRESISI: A3 sampai G9 (sesuai gambar tabel terbaru)
     // tqx=out:csv atau out:json
