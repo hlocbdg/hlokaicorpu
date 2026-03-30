@@ -32,8 +32,9 @@ async function fetchSheetTable() {
     const sheetID = '1Wuw7mdvowQ8kRH2hbTzcpoBKBkktl3ADOq1iftSoVkY';
     const sheetName = 'Tabel1';
     
-    // Range A4:G10 sesuai gambar cell.png (Isi data TW I sampai 2026)
-    const url = `https://docs.google.com/spreadsheets/d/${sheetID}/gviz/tq?sheet=${sheetName}&range=A4:G10`;
+    // PERUBAHAN: Range dimulai dari A3 agar TW I (baris 4) terbaca sebagai DATA
+    // &headers=0 memastikan Google tidak memakan baris pertama sebagai header
+    const url = `https://docs.google.com/spreadsheets/d/${sheetID}/gviz/tq?sheet=${sheetName}&range=A3:G10&headers=0`;
 
     try {
         const response = await fetch(url);
@@ -47,21 +48,24 @@ async function fetchSheetTable() {
         body.innerHTML = ""; 
 
         rows.forEach((rowData) => {
-            // Pastikan data baris ada
-            if (!rowData.c || rowData.c.length === 0) return;
+            if (!rowData.c) return;
+
+            // Ambil kolom A (Index 0)
+            const periode = rowData.c[0] ? (rowData.c[0].f || rowData.c[0].v || "") : "";
+
+            // Lewati baris jika isinya kata "PERIODE", "program", atau kosong
+            // Ini untuk menyaring sisa-sisa header baris 3 yang ikut terbawa
+            if (!periode || periode === "PERIODE" || periode === "program") return;
 
             const tr = document.createElement("tr");
             
-            // Ambil kolom A (Index 0) untuk deteksi baris berwarna
-            const periode = rowData.c[0] ? (rowData.c[0].f || rowData.c[0].v || "") : "";
-            
-            // Tambahkan class berdasarkan konten periode
+            // Penentuan Warna Baris
             if (String(periode).includes("SM")) tr.className = "row-sm";
             if (String(periode) === "2026") tr.className = "row-total";
 
             rowData.c.forEach((cell) => {
                 const td = document.createElement("td");
-                // Gunakan .f (Formatted) agar angka persen (90,00%) muncul sesuai di spreadsheet
+                // Gunakan .f agar format persen dan angka ribuan sama dengan Excel
                 td.innerText = cell ? (cell.f ? cell.f : (cell.v !== null ? cell.v : "")) : "";
                 tr.appendChild(td);
             });
@@ -69,6 +73,6 @@ async function fetchSheetTable() {
             body.appendChild(tr);
         });
     } catch (error) {
-        console.error("Gagal memproses urutan data:", error);
+        console.error("Gagal memuat TW I:", error);
     }
 }
