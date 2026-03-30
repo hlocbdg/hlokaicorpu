@@ -1966,55 +1966,80 @@ canvas{
 /* =========================
    tabel tw
 ========================= */
-/* Styling Kontainer Box agar tidak meluber */
-.box.full.table-box {
-    width: 100%;
-    max-width: 100%; /* Kunci agar sama lebar dengan kontainer chart */
-    box-sizing: border-box;
-    padding: 0; /* Ubah padding jadi 0 agar tabel nempel di garis box */
-    overflow: hidden; /* Sembunyikan overflow pada box pembungkus */
-    border-radius: 8px; /* Pastikan radius box tetap ada */
+/* =======================================================
+   FIX TABEL REKAPITULASI (PENGATURAN KHUSUS)
+   ======================================================= */
+
+/* Pastikan box tabel tidak membesar keluar dari area .main */
+.box.full {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box; /* Padding 25px tidak akan menambah lebar */
+    overflow: hidden;       /* Kunci konten agar tidak bocor keluar border-radius */
+    margin-bottom: 40px;
 }
 
+/* Container agar tabel bisa di-scroll di HP tapi tetap rapi di PC */
 .table-container {
     width: 100%;
-    overflow-x: auto; /* Munculkan scrollbar jika layar kekecilan di HP */
+    overflow-x: auto;
+    margin-top: 15px;
+    border-radius: 8px;
+    border: 1px solid #eee;
 }
 
-/* Styling Utama Tabel */
+/* Styling inti tabel */
 .styled-table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 0.8rem; /* Kecilkan font sedikit agar ramping */
+    /* KUNCI: Memaksa tabel patuh pada lebar container, bukan panjang teks */
+    table-layout: fixed; 
+    font-size: 13px;
+    background-color: white;
+}
+
+/* Header Tabel (Pastikan Sejajar) */
+.styled-table thead th {
+    background-color: #f8f9fa;
+    color: #1f2a38;
+    font-weight: 700;
+    border: 1px solid #dee2e6;
+    padding: 12px 6px;
     text-align: center;
-    table-layout: fixed; /* Kunci lebar tabel agar browser tidak ngacak sel */
-    margin: 0;
 }
 
-/* Kunci Lebar Kolom Pertama (Periode) */
-.col-periode {
-    width: 15%; /* Atur lebar kolom periode agar tidak gepeng */
-}
-
-/* Styling Header */
-.styled-table th {
-    background-color: #f0f4f8; /* Samakan warna dengan spreadsheet */
-    color: #333;
-    border: 1px solid #ccc; /* Garis tebal sedikit di header */
-    padding: 8px;
-    font-weight: 800;
-}
-
-/* Styling Sel Data */
+/* Sel Data */
 .styled-table td {
-    border: 1px solid #ddd; /* Garis tipis di sel data */
-    padding: 6px; /* Kecilkan padding agar ramping */
+    padding: 10px 6px;
+    border: 1px solid #eee;
+    text-align: center;
     color: #444;
+    /* Paksa teks panjang turun ke bawah agar tidak dorong kolom ke samping */
+    word-wrap: break-word; 
+    white-space: normal;
 }
 
-/* Warna Baris Khusus (Pastikan di JS memanggil class ini) */
-.row-sm { background-color: #d1e3fa !important; font-weight: bold; }
-.row-total { background-color: #c5c1e5 !important; font-weight: bold; }
+/* Pengaturan Lebar Kolom (Proporsional) */
+.styled-table th:nth-child(1) { width: 14%; } /* PERIODE */
+.styled-table th:nth-child(n+2) { width: 14.3%; } /* Sisa Kolom bagi rata */
+
+/* Pewarnaan Baris Berdasarkan Class dari JS */
+.row-sm {
+    background-color: #e7f1ff !important; /* Biru Muda SM */
+    font-weight: 700;
+    color: #0c5460;
+}
+
+.row-total {
+    background-color: #f1f0ff !important; /* Ungu Muda Total */
+    font-weight: 800;
+    color: #4657b1;
+}
+
+/* Hover Effect baris biasa */
+.styled-table tbody tr:hover {
+    background-color: #fcfcfc;
+}
 /* =========================
    tabel tw
 ========================= */
