@@ -1971,18 +1971,18 @@ canvas{
    ======================================================= */
 
 .table-box {
-    width: 100%;
+    width: 70%;
     overflow: hidden;
 }
 
 .table-container {
-    width: 100%;
+    width: 70%;
     overflow-x: auto; /* Scroll aktif jika layar sangat sempit */
 }
 
 .styled-table {
-    width: 100%;
-    max-width: 100%;
+    width: 70%;
+    max-width: 70%;
     border-collapse: collapse;
     /* Kunci utama agar kolom tidak melebar sendiri */
     table-layout: fixed; 
@@ -2015,7 +2015,7 @@ canvas{
 /* Styling Header */
 .styled-table thead th {
     background-color: #f1f5f9;
-    font-weight: 700;
+    font-weight: 400;
     color: #333;
 }
 /* =========================
