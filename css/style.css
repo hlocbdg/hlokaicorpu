@@ -1966,37 +1966,116 @@ canvas{
 /* =========================
    tabel tw
 ========================= */
-/* Pastikan tabel tidak meluber ke samping sidebar */
-.box.full {
-    overflow-x: auto; /* Aktifkan scroll jika layar sempit */
-    padding: 20px;
+/* =======================================================
+   SECTION TABEL REKAPITULASI (UTUH)
+   ======================================================= */
+
+/* 1. Container Utama Box */
+.box.full.table-box {
+    width: 100%;
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+    margin-bottom: 40px;
+    box-sizing: border-box; /* Menjaga padding tetap di dalam lebar 100% */
+    overflow: hidden; /* Mencegah elemen dalam bocor keluar */
 }
 
+/* 2. Scroll Handler untuk Layar Kecil / Mobile */
+.table-container {
+    width: 100%;
+    overflow-x: auto; /* Memungkinkan scroll horizontal jika tabel terlalu lebar */
+    border-radius: 8px;
+    border: 1px solid #edf2f7;
+}
+
+/* 3. Styling Utama Tabel */
 .styled-table {
     width: 100%;
-    min-width: 800px; /* Jaga agar tabel punya lebar minimal supaya tidak berhimpitan */
     border-collapse: collapse;
-    table-layout: fixed; /* Bagi kolom secara sistematis */
+    table-layout: fixed; /* Kunci agar lebar kolom konsisten sesuai pengaturan CSS */
+    font-size: 13px;
+    font-family: 'Inter', sans-serif;
+    min-width: 850px; /* Lebar minimum agar data tidak berhimpitan */
 }
 
-/* Beri ruang lebih lebar untuk kolom PERIODE */
-.styled-table th:first-child, 
-.styled-table td:first-child {
-    width: 120px; 
-    text-align: left;
-    padding-left: 15px;
+/* 4. Header Tabel (thead) */
+.styled-table thead th {
+    background-color: #f8fafc;
+    color: #1f2a38;
     font-weight: 700;
+    text-align: center;
+    padding: 12px 8px;
+    border: 1px solid #e2e8f0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
-/* Atur sisa kolom (B sampai G) agar dibagi rata */
+/* Header baris pertama (Judul Besar) */
+.styled-table thead tr:first-child th {
+    font-size: 14px;
+    background-color: #f1f5f9;
+}
+
+/* Header baris kedua (Sub-judul) */
+.styled-table thead tr:last-child th {
+    font-size: 11px;
+    color: #64748b;
+}
+
+/* 5. Baris dan Sel Data (tbody) */
+.styled-table td {
+    padding: 14px 10px;
+    border: 1px solid #f1f5f9;
+    text-align: center;
+    color: #334155;
+    vertical-align: middle;
+    word-wrap: break-word; /* Mencegah teks panjang merusak layout */
+}
+
+/* 6. Pengaturan Lebar Kolom Spesifik */
+.styled-table th:nth-child(1), 
+.styled-table td:nth-child(1) { 
+    width: 120px; /* Kolom PERIODE dibuat lebih lebar sedikit */
+    font-weight: 800;
+    color: #1f2a38;
+    background-color: #fff; /* Reset background untuk kolom pertama */
+}
+
+/* Kolom angka lainnya */
 .styled-table th:not(:first-child),
 .styled-table td:not(:first-child) {
     width: auto;
 }
 
-/* Warna sesuai gambar cell.png */
-.row-sm { background-color: #d9e7fd !important; } /* Biru Muda */
-.row-total { background-color: #d1c4e9 !important; } /* Ungu Muda */
+/* 7. Pewarnaan Baris Berdasarkan Kategori (Sesuai Spreadsheet) */
+/* Baris SM 1 & SM 2 (Biru Muda / Mint) */
+.row-sm { 
+    background-color: #d9e7fd !important; 
+}
+
+/* Baris Total Tahun 2026 (Ungu) */
+.row-total { 
+    background-color: #d1c4e9 !important; 
+    font-weight: 800;
+}
+
+/* Efek Hover untuk baris biasa */
+.styled-table tbody tr:hover {
+    background-color: #f8fafc;
+    transition: 0.2s ease;
+}
+
+/* 8. Responsivitas Tambahan */
+@media (max-width: 1400px) {
+    .main {
+        padding: 20px;
+    }
+    .styled-table {
+        font-size: 12px;
+    }
+}
 /* =========================
    tabel tw
 ========================= */
