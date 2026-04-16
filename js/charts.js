@@ -771,7 +771,7 @@ async function fetchAndRenderTable() {
         const jsonData = JSON.parse(jsonText);
         const rows = jsonData.table.rows;
         
-        const body = document.getElementById("tableBody");
+        const body = document.getElementById("tableBody2");
         if (!body) return;
         body.innerHTML = ""; // Kosongkan tabel sebelum diisi
 
