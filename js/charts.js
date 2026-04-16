@@ -754,7 +754,7 @@ document.addEventListener('DOMContentLoaded', fetchAndRenderTable);
 /* =======================================================
    TAMBAHAN FUNGSI AMBIL & RENDER DATA TABEL
    ======================================================= */
-async function fetchAndRenderTable() {
+async function fetchAndRenderTable2() {
     // ID Sheet tetap sama dari data.js
     const sheetName = 'Tabel2'; 
     
@@ -810,4 +810,4 @@ async function fetchAndRenderTable() {
 }
 
 // Jalankan fungsi saat halaman dimuat
-document.addEventListener('DOMContentLoaded', fetchAndRenderTable);
+document.addEventListener('DOMContentLoaded', fetchAndRenderTable2);
